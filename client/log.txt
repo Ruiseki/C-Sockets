@@ -1,0 +1,13 @@
+
+
+ ##STARTING THE CLIENT##
+
+Port set at : 55000
+Server IP set at : 93.16.231
+Reading data.txt...
+File found. Pseudo : Admin
+Version : a.0.15
+WSA - OK!
+ADRESSE - OK!
+SOCKET - OK!
+CONNECT - MERDE!

@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++.exe générer le fichier actif",
+			"command": "g++",
+			"args": [
+				"*.cpp",
+				"*.hpp",
+				"-o",
+				"${fileBasenameNoExtension}",
+				"-lwsock32"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compilateur : \"C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\g++.exe\""
+		}
+	]
+}
