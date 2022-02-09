@@ -43,7 +43,7 @@ void downloadFile(int master_socket, string path)
     Sleep(2000);
     wlog("[UPDATER] Sending //ready");
     send(master_socket, "//ready", strlen("//ready"), 0); // ready to download
-    cout<<"-> ready"<<endl;
+    cout<<"Making the handshake ..."<<endl;
     
     wlog("[UPDATER] Waiting //ready..."); // waiting the server
     buffer = new char[bufferSize];
@@ -52,7 +52,7 @@ void downloadFile(int master_socket, string path)
         wlog("Failed receiving");
         throw new exception();
     }
-    cout<<"<- ready"<<endl;
+    cout<<"Handshake complete"<<endl;
     
     delete[] buffer; buffer=0;
     buffer = new char[bufferSize];
@@ -60,7 +60,7 @@ void downloadFile(int master_socket, string path)
     wlog("[UPDATER] Waiting fileSize...");
     valread = recv(master_socket,buffer,bufferSize,0);
     buffer[valread] = '\0';
-    cout<<"Valread : "<<valread<<endl<<buffer<<endl;
+    cout<<"File size : "<<stoi((string)buffer)/1024<<" kio"<<endl;
 
     sendMsg(master_socket,"//next");
 
@@ -183,10 +183,8 @@ int main(int argc, char *argv[])
 
     shutdown(master_socket,2);
 
-    string command("client.exe ");
-    command += port;
-    command += " ";
-    command += serverAddr;
+    string command;
+    command = "client.exe " + to_string(port) + " " + serverAddr;
 
     system(command.c_str());
     
